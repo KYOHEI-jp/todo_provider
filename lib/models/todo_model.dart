@@ -7,5 +7,5 @@ class Todo {
   final String desc;
   final bool completed;
 
-  Todo(this.id, this.desc, this.completed);
+  Todo({required this.id, required this.desc, required this.completed});
 }
