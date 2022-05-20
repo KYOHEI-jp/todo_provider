@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+
 import '../models/todo_model.dart';
 
 class TodoFilterState {
@@ -21,5 +23,16 @@ class TodoFilterState {
     return TodoFilterState(
       filter: filter ?? this.filter,
     );
+  }
+}
+
+class TodoFilter with ChangeNotifier {
+  TodoFilterState _state = TodoFilterState.initial();
+
+  TodoFilterState get state => _state;
+
+  void changeFilter(Filter newFilter) {
+    _state = _state.copyWith(filter: newFilter);
+    notifyListeners();
   }
 }
