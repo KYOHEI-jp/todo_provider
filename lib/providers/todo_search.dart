@@ -3,15 +3,17 @@ class TodoSearchState {
 
   TodoSearchState({required this.searchTerm});
 
+  @override
   List<Object> get props => [searchTerm];
 
+  @override
   bool get stringify => true;
 
   TodoSearchState copyWith({
-    String? filter,
+    String? searchTerm,
   }) {
     return TodoSearchState(
-      searchTerm: filter ?? this.searchTerm,
+      searchTerm: searchTerm ?? this.searchTerm,
     );
   }
 

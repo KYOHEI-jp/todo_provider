@@ -9,8 +9,10 @@ class Todo {
 
   Todo({required this.id, required this.desc, required this.completed});
 
+  @override
   List<Object> get props => [id, desc, completed];
 
+  @override
   bool get stringify => true;
 }
 
