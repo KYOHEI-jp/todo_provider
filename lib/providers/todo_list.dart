@@ -1,9 +1,19 @@
+import 'package:flutter/cupertino.dart';
+
 import '../models/todo_model.dart';
 
 class TodoListState {
   final List<Todo> todos;
 
   TodoListState({required this.todos});
+
+  factory TodoListState.initial() {
+    return TodoListState(todos: [
+      Todo(id: "1", desc: "Clean the room", completed: false),
+      Todo(id: "2", desc: "wash the dish", completed: false),
+      Todo(id: "3", desc: "Do homework", completed: false)
+    ]);
+  }
 
   @override
   List<Object> get props => [todos];
@@ -15,5 +25,22 @@ class TodoListState {
     List<Todo>? todos,
   }) {
     return TodoListState(todos: todos ?? this.todos);
+  }
+}
+
+class TodoList with ChangeNotifier {
+  TodoListState _state = TodoListState.initial();
+
+  TodoListState get state => _state;
+
+  void addTodo(String todoDesc) {
+    final newTodo = Todo(desc: todoDesc);
+    final newTodos = [..._state.todos, newTodo];
+    _state = _state.copyWith(todos: newTodos);
+    notifyListeners();
+  }
+
+  void editTodo(String id, String todoDesc) {
+    final newTodos = _state.todos
   }
 }
