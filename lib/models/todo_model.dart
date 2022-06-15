@@ -3,14 +3,14 @@ import 'package:uuid/uuid.dart';
 Uuid uuid = Uuid();
 
 class Todo {
-  final String id;
+  final String? id;
   final String desc;
-  final bool completed;
+  final bool? completed;
 
-  Todo({required this.id, required this.desc, required this.completed});
+  Todo({this.id, required this.desc, this.completed});
 
   @override
-  List<Object> get props => [id, desc, completed];
+  List<Object> get props => [id!, desc, completed!];
 
   @override
   bool get stringify => true;
